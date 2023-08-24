@@ -31,10 +31,15 @@ export const fetchMovieDescription = (id: number) => {
   };
 };
 
-export const fetchMovies = (search: string) => {
+export const fetchMovies = (search?: string) => {
   return async function (dispatch: DispatchType) {
     axios
-      .get(`${API}/movie`)
+      .get(`${API}/trending/movie`, {
+        headers: {
+          "Content-Type": "application/json",
+          api_key: "94e4d834821a0e42ec7ccbeeb4674a18",
+        },
+      })
       .then((res) => dispatch(getMovies(res.data.premiums)))
       .catch((err) => console.error(err));
   };

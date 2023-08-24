@@ -7,7 +7,7 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <Navbar className="bg-info">
+    <Navbar className="shadow-sm">
       <Container className="justify-content-between">
         <Navbar.Brand href="#list">Movies</Navbar.Brand>
         {location.pathname === "/details" && (
