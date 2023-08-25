@@ -12,9 +12,8 @@ const ListPage = () => {
     }) => state.movieReducer
   );
   useEffect(() => {
-    dispatch(fetchMovies({ page: state.page }));
-  }, [dispatch, state.page, state.total_pages]);
-  console.log(state.total_pages);
+    dispatch(fetchMovies());
+  }, [dispatch]);
 
   return (
     <div>
