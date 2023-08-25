@@ -4,9 +4,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MovieCard from "../movie_card/MovieCard";
 import { Movie } from "../../types";
+import { PaginationControl } from "react-bootstrap-pagination-control";
 
 interface MovieGridProps {
   movies: Movie[];
+  page: number;
+  total_pages: number;
+  handlePagination: (page: number) => void;
 }
 
 const MovieCardGrid = (props: MovieGridProps) => {
@@ -20,6 +24,16 @@ const MovieCardGrid = (props: MovieGridProps) => {
           </Col>
         ))}
       </Row>
+      <PaginationControl
+        page={props.page}
+        between={4}
+        total={props.total_pages}
+        limit={20}
+        changePage={(page) => {
+          props.handlePagination(page);
+        }}
+        ellipsis={1}
+      />
     </Container>
   );
 };

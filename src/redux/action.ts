@@ -10,10 +10,14 @@ const getMovieDescription = (movie: Movie) => {
   };
 };
 
-const getMovies = (movies: Movie[]) => {
+const getMovies = (payload: {
+  page: number;
+  total_pages: number;
+  movies: Movie[];
+}) => {
   return {
     type: FETCH_MOVIES,
-    payload: movies,
+    payload: payload,
   };
 };
 
@@ -35,19 +39,31 @@ export const fetchMovieDescription = (id: number) => {
   };
 };
 
-export const fetchMovies = (search?: string) => {
+export const fetchMovies = (params?: { search?: string; page?: number }) => {
   return async function (dispatch: DispatchType) {
+    const api_url =
+      BASE_URL +
+      (params?.search && params.search !== ""
+        ? "/search/movie"
+        : "/movie/popular");
     axios
-      .get(`${BASE_URL}/movie/popular`, {
+      .get(api_url, {
         headers: {
           "Content-Type": "application/json",
         },
         params: {
           api_key: process.env.REACT_APP_MOVIE_API_KEY,
+          query: params?.search,
+          page: params?.page,
         },
       })
       .then((res) => {
-        dispatch(getMovies(res.data.results));
+        const payload = {
+          page: res.data.page,
+          total_pages: res.data.total_pages,
+          movies: res.data.results,
+        };
+        dispatch(getMovies(payload));
       })
       .catch((err) => console.error(err));
   };
