@@ -12,7 +12,7 @@ const ListPage = () => {
     }) => state.movieReducer
   );
   useEffect(() => {
-    dispatch(fetchMovies({ page: state.page }));
+    dispatch(fetchMovies());
   }, [dispatch]);
 
   return (
