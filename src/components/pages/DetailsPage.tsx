@@ -20,19 +20,21 @@ const DetailsPage = () => {
 
   return (
     selectedMovie && (
-      <Card>
-        <Card.Img variant="top" src={API_IMG + selectedMovie.poster_path} />
-        <Card.Body>
-          <Card.Subtitle style={{ height: "40px", overflowY: "clip" }}>
-            {selectedMovie.title}
-          </Card.Subtitle>
+      <Card className="d-flex flex-row ">
+        <Card.Img
+          variant="top"
+          src={API_IMG + selectedMovie.poster_path}
+          className="w-25 my-3 mx-3"
+        />
+        <div className="d-flex flex-column  w-25 my-3">
+          <Card.Title>{selectedMovie.title}</Card.Title>
           <Card.Text>
             <strong>Rating:</strong> {selectedMovie.vote_average}/10
           </Card.Text>
-          <Card.Text style={{ maxHeight: "50px", overflowY: "clip" }}>
-            {selectedMovie.overview}
-          </Card.Text>
-        </Card.Body>
+          <Card.Text>Release Date: {selectedMovie.release_date}</Card.Text>
+          <Card.Text>Length: {selectedMovie.runtime} mins</Card.Text>
+          <Card.Text>{selectedMovie.overview}</Card.Text>
+        </div>
       </Card>
     )
   );

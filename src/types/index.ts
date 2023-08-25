@@ -4,8 +4,8 @@ export interface Movie {
   overview: string;
   poster_path: string;
   vote_average: number;
-  length?: string;
+  runtime?: string;
   director?: string;
   cast?: string[];
-  release_year?: number;
+  release_date?: number;
 }
