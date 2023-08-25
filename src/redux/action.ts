@@ -1,8 +1,7 @@
 import { DispatchType, FETCH_MOVIES, FETCH_MOVIE_DESCRIPTION } from "./types";
 import axios from "axios";
 import { Movie } from "../types";
-
-const API = "https://api.themoviedb.org/3";
+import { BASE_URL } from "../config";
 
 const getMovieDescription = (movie: Movie) => {
   return {
@@ -21,7 +20,7 @@ const getMovies = (movies: Movie[]) => {
 export const fetchMovieDescription = (id: number) => {
   return async function (dispatch: DispatchType) {
     await axios
-      .get(`${API}/movie/${id}`, {
+      .get(`${BASE_URL}/movie/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -34,7 +33,7 @@ export const fetchMovieDescription = (id: number) => {
 export const fetchMovies = (search?: string) => {
   return async function (dispatch: DispatchType) {
     axios
-      .get(`${API}/movie/popular`, {
+      .get(`${BASE_URL}/movie/popular`, {
         headers: {
           "Content-Type": "application/json",
         },

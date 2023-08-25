@@ -1,7 +1,8 @@
 export interface Movie {
+  id: number;
   title: string;
-  description: string;
-  image_url: string;
+  overview: string;
+  poster_path: string;
   rating: number;
   length?: string;
   director?: string;

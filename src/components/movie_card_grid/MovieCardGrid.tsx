@@ -12,10 +12,10 @@ interface MovieGridProps {
 const MovieCardGrid = (props: MovieGridProps) => {
   const { movies } = props;
   return (
-    <Container>
+    <Container className="my-2">
       <Row>
         {movies.map((movie, index) => (
-          <Col key={index} sm={6} md={4} lg={3}>
+          <Col key={index} sm={6} md={4} lg={2} className="my-1">
             <MovieCard movie={movie} />
           </Col>
         ))}
