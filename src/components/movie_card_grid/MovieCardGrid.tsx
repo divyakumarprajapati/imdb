@@ -9,7 +9,7 @@ interface MovieGridProps {
   movies: Movie[];
 }
 
-const MovieGrid = (props: MovieGridProps) => {
+const MovieCardGrid = (props: MovieGridProps) => {
   const { movies } = props;
   return (
     <Container>
@@ -24,4 +24,4 @@ const MovieGrid = (props: MovieGridProps) => {
   );
 };
 
-export default MovieGrid;
+export default MovieCardGrid;

@@ -34,13 +34,18 @@ export const fetchMovieDescription = (id: number) => {
 export const fetchMovies = (search?: string) => {
   return async function (dispatch: DispatchType) {
     axios
-      .get(`${API}/trending/movie`, {
+      .get(`${API}/movie/popular`, {
         headers: {
           "Content-Type": "application/json",
+        },
+        params: {
           api_key: "94e4d834821a0e42ec7ccbeeb4674a18",
         },
       })
-      .then((res) => dispatch(getMovies(res.data.premiums)))
+      .then((res) => {
+        console.log(res.data.results);
+        dispatch(getMovies(res.data.results));
+      })
       .catch((err) => console.error(err));
   };
 };

@@ -1,19 +1,21 @@
-import { Dispatch } from "react";
+import { Dispatch, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/action";
 import { Movie } from "../../types";
-import MovieGrid from "../movie_card_grid/MovieCardGrid";
+import MovieCardGrid from "../movie_card_grid/MovieCardGrid";
 
 const ListPage = () => {
   const dispatch: Dispatch<any> = useDispatch();
-  dispatch(fetchMovies());
-
   const state = useSelector(
     (state: { movieReducer: { movies: Movie[] } }) => state.movieReducer
   );
+  useEffect(() => {
+    dispatch(fetchMovies());
+  }, [dispatch]);
+
   return (
     <div>
-      <MovieGrid movies={state.movies} />
+      <MovieCardGrid movies={state.movies} />
     </div>
   );
 };
