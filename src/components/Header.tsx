@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <Navbar className="shadow-sm">
       <Container className="justify-content-between">
@@ -13,7 +14,7 @@ const Header = () => {
         {location.pathname === "/details" && (
           <Button
             variant="link"
-            onClick={() => navigate(`${location.pathname === "/list"}`)}
+            onClick={() => navigate("/list", { replace: true })}
           >
             Back to Home
           </Button>

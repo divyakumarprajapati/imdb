@@ -12,14 +12,14 @@ const MovieCard = (props: MovieCardProps) => {
   const { movie } = props;
   const navigate = useNavigate();
   return (
-    <Card onClick={() => navigate(`details`)}>
+    <Card onClick={() => navigate(`/details/${movie.id}`)}>
       <Card.Img variant="top" src={API_IMG + movie.poster_path} />
       <Card.Body>
         <Card.Subtitle style={{ height: "40px", overflowY: "clip" }}>
           {movie.title}
         </Card.Subtitle>
         <Card.Text>
-          <strong>Rating:</strong> {movie.rating}/10
+          <strong>Rating:</strong> {movie.vote_average}/10
         </Card.Text>
         <Card.Text style={{ maxHeight: "50px", overflowY: "clip" }}>
           {movie.overview}
@@ -27,7 +27,7 @@ const MovieCard = (props: MovieCardProps) => {
         <button
           type="button"
           className="btn btn-dark"
-          onClick={() => navigate(`details`)}
+          onClick={() => navigate(`/details/${movie.id}`)}
         >
           View
         </button>

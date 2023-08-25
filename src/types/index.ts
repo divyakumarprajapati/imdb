@@ -3,7 +3,7 @@ export interface Movie {
   title: string;
   overview: string;
   poster_path: string;
-  rating: number;
+  vote_average: number;
   length?: string;
   director?: string;
   cast?: string[];

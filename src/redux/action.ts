@@ -24,8 +24,13 @@ export const fetchMovieDescription = (id: number) => {
         headers: {
           "Content-Type": "application/json",
         },
+        params: {
+          api_key: process.env.REACT_APP_MOVIE_API_KEY,
+        },
       })
-      .then((res) => dispatch(getMovieDescription(res.data)))
+      .then((res) => {
+        dispatch(getMovieDescription(res.data));
+      })
       .catch((err) => console.error(err));
   };
 };
@@ -38,11 +43,10 @@ export const fetchMovies = (search?: string) => {
           "Content-Type": "application/json",
         },
         params: {
-          api_key: "94e4d834821a0e42ec7ccbeeb4674a18",
+          api_key: process.env.REACT_APP_MOVIE_API_KEY,
         },
       })
       .then((res) => {
-        console.log(res.data.results);
         dispatch(getMovies(res.data.results));
       })
       .catch((err) => console.error(err));
